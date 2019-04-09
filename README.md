@@ -1,1 +1,1 @@
-# Spart-JS-RPS
+# Rock Paper Scissors Game in Javascript
