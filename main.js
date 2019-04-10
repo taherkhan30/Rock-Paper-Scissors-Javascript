@@ -1,65 +1,68 @@
-// best out of 5 wins
-// user selects an action
+// prompt user
+var userChoice = prompt("Rock, paper or scissors?").toUpperCase();
 
+// initialize score variables to zero
+var userScore = 0;
+var compScore = 0;
 
-var userChoice = prompt("rock, paper or scissors");
-
-// computer selects action
-var compChoice = Math.random();
-
-
-
-if (compChoice <= 0.33){
-
-  compChoice = "rock";
-
-}else if(0.34<= compChoice <=0.66){
-
-  compChoice = "paper";
-
-}else {
-
-  compChoice ="scissors";
+// computer random choice
+var computerChoice = Math.random();
+if (computerChoice < 0.34) {
+    computerChoice = "rock".toUpperCase();
+} else if(computerChoice <= 0.67) {
+    computerChoice = "paper".toUpperCase();
+} else {
+    computerChoice = "scissors".toUpperCase();
 }
 
-// console.log(compChoice);
+var compare = function(choice1,choice2) {
+    if (choice1 === choice2) {
+      alert("Comp choice: " + computerChoice);
+      alert("Draw, play again");
+      userChoice = prompt("so, rock, paper or scissors?").toUpperCase();
 
-// if user selects rock and computer selects paper
-// then computer scores 1
-// compare function
-choice1 = userChoice;
-choice2 = compChoice;
-
-
-function compareChoice(choice1, choice2){
-
-  if (choice1 === choice2){
-
-    return ("the result is tie");
-
-  }
-  if (choice1 === "rock"){
-      if(choice2 === "scissors"){
-        return ("rock wins")
-      }else {
-          return ("paper wins");
-      }
-      }
-  if (choice1 === "paper"){
-      if(choice2 === "rock"){
-          return ("paper wins")
-      }else {
-            return ("scissors wins");
         }
-      }
-    if (choice1 === "scissors"){
-        if(choice2 === "rock"){
-            return ("rock wins")
-        }else {
-              return ("scissors wins");
-          }
+        else if (choice1 === "ROCK") {
+            if (choice2 === "SCISSORS") {
+              alert("Comp choice: " + computerChoice);
+              alert("User wins this round");
+              userScore +=1;
+            }
+            else {
+              alert("Comp choice: " + computerChoice);
+              alert("Computer wins this round");
+              compScore +=1;
+            }
         }
 
-  }
+        else if (choice1 === "PAPER") {
+            if (choice2 === "ROCK") {
+              alert("Comp choice: " + computerChoice);
+              alert("User wins this round");
+              userScore +=1;
+            }
+            else {
+              alert("Comp choice: " + computerChoice);
+              alert("Computer wins this round");
+              compScore +=1;
+            }
+        }
+        else if (choice1 === "SCISSORS") {
+            if (choice2 === "ROCK") {
+              alert("Comp choice: " + computerChoice);
+              alert("Computer wins this round");
+              compScore +=1;
+            }
+            else {
+              alert("Comp choice: " + computerChoice);
+              alert("User wins this round");
+              userScore +=1;
+            }
+        }
 
-  console.log(compareChoice(choice1,choice2));
+    else {
+    alert("You have typed something incorrectly, try again");
+    }
+};
+
+compare(userChoice, computerChoice);
