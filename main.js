@@ -1,68 +1,81 @@
-// prompt user
-var userChoice = prompt("Rock, paper or scissors?").toUpperCase();
+function startGame() {
+  var compScore = 0;
+  var userScore = 0;
 
-// initialize score variables to zero
-var userScore = 0;
-var compScore = 0;
+  for (var i = 1; i <= 3; i++) {
+    var winner = round();
+    if (winner == 1) {
+      userScore ++;
+    } else if (winner == -1) {
+      compScore ++;
+    }
+  }
 
-// computer random choice
-var computerChoice = Math.random();
-if (computerChoice < 0.34) {
-    computerChoice = "rock".toUpperCase();
-} else if(computerChoice <= 0.67) {
-    computerChoice = "paper".toUpperCase();
-} else {
-    computerChoice = "scissors".toUpperCase();
+  if (compScore > userScore) {
+    console.log('Computer wins!');
+  } else {
+    console.log('user wins!');
+  }
 }
 
-var compare = function(choice1,choice2) {
-    if (choice1 === choice2) {
-      alert("Comp choice: " + computerChoice);
-      alert("Draw, play again");
-      userChoice = prompt("so, rock, paper or scissors?").toUpperCase();
 
-        }
-        else if (choice1 === "ROCK") {
-            if (choice2 === "SCISSORS") {
-              alert("Comp choice: " + computerChoice);
-              alert("User wins this round");
-              userScore +=1;
-            }
-            else {
-              alert("Comp choice: " + computerChoice);
-              alert("Computer wins this round");
-              compScore +=1;
-            }
-        }
 
-        else if (choice1 === "PAPER") {
-            if (choice2 === "ROCK") {
-              alert("Comp choice: " + computerChoice);
-              alert("User wins this round");
-              userScore +=1;
-            }
-            else {
-              alert("Comp choice: " + computerChoice);
-              alert("Computer wins this round");
-              compScore +=1;
-            }
-        }
-        else if (choice1 === "SCISSORS") {
-            if (choice2 === "ROCK") {
-              alert("Comp choice: " + computerChoice);
-              alert("Computer wins this round");
-              compScore +=1;
-            }
-            else {
-              alert("Comp choice: " + computerChoice);
-              alert("User wins this round");
-              userScore +=1;
-            }
-        }
+function round(){
+  // initialize score variables to zero
+  // var userScore = 0;
+  // var compScore = 0;
+  // prompt user
+  var userChoice = prompt("rock paper scissors");
+  // computer random choice
+  var computerChoice = Math.random();
+  if (computerChoice < 0.34) {
+      computerChoice = "rock";
+  } else if(computerChoice <= 0.67) {
+      computerChoice = "paper";
+  } else {
+      computerChoice = "scissors";
+  }
+  // // call compare and parse parameters to choice 1 and choice 2
+  console.log ("user" + userChoice);
+  console.log("computer" + computerChoice);
+  var msg = compare(userChoice, computerChoice);
+    console.log(msg);
+}
 
-    else {
-    alert("You have typed something incorrectly, try again");
-    }
-};
 
-compare(userChoice, computerChoice);
+
+  var compare = function(choice1,choice2) {
+      if (choice1 === choice2) {
+          console.log("tie");
+           return 0;
+        } else if (choice1 === "rock") {
+                if (choice2 === "scissors") {
+                console.log("user wins");
+                return 1;
+            } else if (choice2 === "paper"){
+                console.log("computer wins");
+                return 2;
+           }else if (choice1 === "paper") {
+                  if (choice2 === "rock") {
+                    console.log("user wins");
+                return 1;
+              }  else if (choice2 === "scissors"){
+                  console.log("computer wins");
+                return 2;
+              }
+          } else if (choice1 === "scissors") {
+                  if (choice2 === "rock") {
+                      console.log("computer wins");
+                    return 2;
+                } else if (choice2 === "paper"){
+                      console.log("user wins");
+                  return 1;
+              }
+          }
+
+
+  }
+
+}
+
+startGame();
